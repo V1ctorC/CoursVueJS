@@ -10,6 +10,7 @@
     <div id="mon-app">
         <h1>Cours Vue JS</h1>
         <p>{{ txt }}</p>
+        <p>{{ presentation() }}</p>
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.13/dist/vue.js"></script>
@@ -17,7 +18,13 @@
         new Vue({
             el: '#mon-app',
             data: {
-                txt: 'Hello world'
+                txt: 'Hello world',
+                nb: 10
+            },
+            methods: {
+                presentation: function (){
+                    return this.txt + this.nb
+                }
             }
         })
     </script>
