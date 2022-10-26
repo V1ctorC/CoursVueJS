@@ -6,13 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vue JS playground</title>
 </head>
+<style>
+    canvas {
+        width: 300px;
+        height: 200px;
+        border: 1px solid #333;
+    }
+</style>
 <body>
     <div id="mon-app">
         <h1>Cours Vue JS</h1>
-        <p>{{ txt }}</p>
-        <p>{{ presentation() }}</p>
-        <a v-bind:href="URLVueJs">Le site de Vue JS</a>
-        <img v-bind:src="URLImg" alt="">
+        <button v-on:click="augmente">Augmente</button>
+        <button v-on:click="baisse">Baisse</button>
+        <h2>Compteur : {{ compteur }}</h2>
+        <canvas v-on:mousemove="coords">
+
+        </canvas>
+        <p>{{ x }} / {{ y }}</p>
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.13/dist/vue.js"></script>
@@ -20,14 +30,21 @@
         new Vue({
             el: '#mon-app',
             data: {
-                txt: 'Hello world',
-                nb: 10,
-                URLVueJs: 'https://v2.vuejs.org/v2/guide/index.html',
-                URLImg : 'https://images.unsplash.com/photo-1661961110372-8a7682543120?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80'
+                compteur: 0,
+                x: 0,
+                y: 0
             },
             methods: {
-                presentation: function (){
-                    return this.txt + this.nb
+                augmente: function () {
+                    this.compteur++
+                },
+                baisse: function () {
+                    this.compteur--
+                },
+                coords: function (e) {
+                    //console.log(e)
+                    this.x = e.offsetX
+                    this.y = e.offsetY
                 }
             }
         })
