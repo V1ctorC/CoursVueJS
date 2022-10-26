@@ -11,6 +11,8 @@
         <h1>Cours Vue JS</h1>
         <p>{{ txt }}</p>
         <p>{{ presentation() }}</p>
+        <a v-bind:href="URLVueJs">Le site de Vue JS</a>
+        <img v-bind:src="URLImg" alt="">
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.13/dist/vue.js"></script>
@@ -19,7 +21,9 @@
             el: '#mon-app',
             data: {
                 txt: 'Hello world',
-                nb: 10
+                nb: 10,
+                URLVueJs: 'https://v2.vuejs.org/v2/guide/index.html',
+                URLImg : 'https://images.unsplash.com/photo-1661961110372-8a7682543120?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80'
             },
             methods: {
                 presentation: function (){
