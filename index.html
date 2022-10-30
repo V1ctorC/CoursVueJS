@@ -21,7 +21,8 @@
         <h2>Compteur : {{ compteur }}</h2>
         
         <p>Ton nom</p>
-        <input type="text" v-on:keyup.enter="inpFunc">
+        <input type="text" v-model="valeur">
+        <p>{{ valeur }}</p>
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.13/dist/vue.js"></script>
@@ -30,8 +31,7 @@
             el: '#mon-app',
             data: {
                 compteur: 0,
-                x: 0,
-                y: 0
+                valeur: ""
             },
             methods: {
                 augmente: function () {
@@ -39,9 +39,6 @@
                 },
                 baisse: function () {
                     this.compteur--
-                },
-                inpFunc: function () {
-                    console.log('Tu as appuyé sur une touche')
                 }
             }
         })
