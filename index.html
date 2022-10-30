@@ -19,19 +19,9 @@
         <button v-on:click="augmente">Augmente</button>
         <button v-on:click="baisse">Baisse</button>
         <h2>Compteur : {{ compteur }}</h2>
-        <canvas v-on:mousemove="coords">
-
-        </canvas>
-        <p>{{ x }} / {{ y }}</p>
-
-        <div v-on:click="foo">
-            <p>Lorem ipsum <button v-on:click.stop="foo">Clique sur moi</button></p>
-        </div>
-
-        <form v-on:submit.prevent="foo">
-            <button>Valider</button>
-        </form>
         
+        <p>Ton nom</p>
+        <input type="text" v-on:keyup.enter="inpFunc">
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.13/dist/vue.js"></script>
@@ -50,13 +40,8 @@
                 baisse: function () {
                     this.compteur--
                 },
-                coords: function (e) {
-                    //console.log(e)
-                    this.x = e.offsetX
-                    this.y = e.offsetY
-                },
-                foo: function () {
-                    console.log('click')
+                inpFunc: function () {
+                    console.log('Tu as appuyé sur une touche')
                 }
             }
         })
