@@ -5,20 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vue JS playground</title>
+
+    <style>
+        .box {
+            width: 250px;
+            height: 250px;
+            border: 1px solid black;
+        }
+
+        .red {
+            background: crimson;
+        }
+    </style>
 </head>
 <body>
     <div id="mon-app">
         <h1>Cours Vue JS</h1>
-        <button @click="compteurA++">Augmente</button>
-        <button @click="compteurA--">Baisse</button>
-        <h2>Compteur : {{ compteurA }}</h2>
-        <p>{{ checkValeur() }} ||||||  {{ memo }}</p>
+        <button v-on:click="toggleColor = !toggleColor">toggleColor</button>
+        <div class="box"
+            v-bind:class="{ red : toggleColor }"
+        >
 
-        <button v-on:click="compteurB++">Augmente</button>
-        <button v-on:click="compteurB--">Baisse</button>
-        <h2>Compteur : {{ compteurB }}</h2>
-
-        <a :href="compteurA">Hello</a>
+        </div>
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.13/dist/vue.js"></script>
@@ -26,27 +34,7 @@
         new Vue({
             el: '#mon-app',
             data: {
-                compteurA: 0,
-                compteurB: 0
-            },
-            methods: {
-                checkValeur: function () {
-                    console.log('method lancé')
-                    return this.compteurA > 10 ? 'Supérieur à dix' : 'Inférieur à dix'
-                }
-            },
-            watch: {
-                compteurA: function () {
-                    setTimeout(function () {
-                        this.compteurA = 0
-                    }.bind(this), 1500)
-                }
-            },
-            computed: {
-                memo: function () {
-                    console.log('mémo lancé')
-                    return this.compteurA > 10 ? 'Supérieur à dix' : 'Inférieur à dix'
-                }
+                toggleColor: false
             }
         })
     </script>
