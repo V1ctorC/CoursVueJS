@@ -6,23 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vue JS playground</title>
 </head>
-<style>
-    canvas {
-        width: 300px;
-        height: 200px;
-        border: 1px solid #333;
-    }
-</style>
 <body>
     <div id="mon-app">
         <h1>Cours Vue JS</h1>
-        <button v-on:click="compteur++">Augmente</button>
-        <button v-on:click="compteur--">Baisse</button>
-        <h2>Compteur : {{ compteur }}</h2>
+        <button v-on:click="compteurA++">Augmente</button>
+        <button v-on:click="compteurA--">Baisse</button>
+        <h2>Compteur : {{ compteurA }}</h2>
+        <p>{{ checkValeur() }} ||||||  {{ memo }}</p>
 
-        <h3>{{ compteur ? 'True' : 'False' }}</h3>
-        
-        <p v-html="htmlBrut">{{ htmlBrut }}</p>
+        <button v-on:click="compteurB++">Augmente</button>
+        <button v-on:click="compteurB--">Baisse</button>
+        <h2>Compteur : {{ compteurB }}</h2>
+
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.13/dist/vue.js"></script>
@@ -30,16 +25,19 @@
         new Vue({
             el: '#mon-app',
             data: {
-                compteur: 0,
-                valeur: "",
-                htmlBrut: '<p>Mon HTML brut</p>'
+                compteurA: 0,
+                compteurB: 0
             },
             methods: {
-                augmente: function () {
-                    this.compteur++
-                },
-                baisse: function () {
-                    this.compteur--
+                checkValeur: function () {
+                    console.log('method lancé')
+                    return this.compteurA > 10 ? 'Supérieur à dix' : 'Inférieur à dix'
+                }
+            },
+            computed: {
+                memo: function () {
+                    console.log('mémo lancé')
+                    return this.compteurA > 10 ? 'Supérieur à dix' : 'Inférieur à dix'
                 }
             }
         })
