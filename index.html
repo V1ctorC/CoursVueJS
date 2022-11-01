@@ -16,13 +16,13 @@
 <body>
     <div id="mon-app">
         <h1>Cours Vue JS</h1>
-        <button v-on:click="augmente">Augmente</button>
-        <button v-on:click="baisse">Baisse</button>
+        <button v-on:click="compteur++">Augmente</button>
+        <button v-on:click="compteur--">Baisse</button>
         <h2>Compteur : {{ compteur }}</h2>
+
+        <h3>{{ compteur ? 'True' : 'False' }}</h3>
         
-        <p>Ton nom</p>
-        <input type="text" v-model="valeur">
-        <p>{{ valeur }}</p>
+        <p v-html="htmlBrut">{{ htmlBrut }}</p>
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.13/dist/vue.js"></script>
@@ -31,7 +31,8 @@
             el: '#mon-app',
             data: {
                 compteur: 0,
-                valeur: ""
+                valeur: "",
+                htmlBrut: '<p>Mon HTML brut</p>'
             },
             methods: {
                 augmente: function () {
