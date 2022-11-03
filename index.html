@@ -27,6 +27,7 @@
         <h1>Cours Vue JS</h1>
         <button v-on:click="toggleColor = !toggleColor">toggleColor</button>
         <div v-bind:class="[objCSS, toggleColor ? 'bordure' : '']"></div>
+        <p :style="monStyle">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolores tempora praesentium cum et, esse minima aut dicta rem reiciendis beatae quas porro nostrum repudiandae animi deleniti incidunt delectus reprehenderit itaque!</p>
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.13/dist/vue.js"></script>
@@ -34,13 +35,21 @@
         new Vue({
             el: '#mon-app',
             data: {
-                toggleColor: false
+                toggleColor: false,
+                color: 'lightblue',
+                width: 200
             },
             computed: {
                 objCSS: function() {
                     return {
                         red: this.toggleColor,
                         box: true
+                    }
+                },
+                monStyle: function() {
+                    return {
+                        backgroundColor: this.color,
+                        width: `${this.width}px`
                     }
                 }
             }
