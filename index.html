@@ -16,17 +16,17 @@
         .red {
             background: crimson;
         }
+
+        .bordure {
+            border: 10px solid #333;
+        }
     </style>
 </head>
 <body>
     <div id="mon-app">
         <h1>Cours Vue JS</h1>
         <button v-on:click="toggleColor = !toggleColor">toggleColor</button>
-        <div class="box"
-            v-bind:class="{ red : toggleColor }"
-        >
-
-        </div>
+        <div v-bind:class="[objCSS, toggleColor ? 'bordure' : '']"></div>
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.13/dist/vue.js"></script>
@@ -35,6 +35,14 @@
             el: '#mon-app',
             data: {
                 toggleColor: false
+            },
+            computed: {
+                objCSS: function() {
+                    return {
+                        red: this.toggleColor,
+                        box: true
+                    }
+                }
             }
         })
     </script>
