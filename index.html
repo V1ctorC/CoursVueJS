@@ -27,11 +27,11 @@
         <h1>Cours Vue JS</h1>
         <button v-on:click="toggleBox = !toggleBox">toggleColor</button>
 
-        <p v-if="num === 1">La valeur est 1</p>        
-        <p v-else-if="num === 2">La valeur est 2</p>        
-        <p v-else-if="num === 3">La valeur est 3</p> 
-        <p v-else>Cela n'est ni 1, ni 2, ni 3</p>       
-
+        <template v-if="toggleBox">
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore reprehenderit quaerat repellendus sapiente atque deleniti voluptas, quas, iusto eaque veniam odit delectus tenetur, provident ratione neque eveniet error quis magnam?</p>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore reprehenderit quaerat repellendus sapiente atque deleniti voluptas, quas, iusto eaque veniam odit delectus tenetur, provident ratione neque eveniet error quis magnam?</p>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore reprehenderit quaerat repellendus sapiente atque deleniti voluptas, quas, iusto eaque veniam odit delectus tenetur, provident ratione neque eveniet error quis magnam?</p>
+        </template>
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.13/dist/vue.js"></script>
