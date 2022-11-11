@@ -28,7 +28,11 @@
         <button v-on:click="toggleBox = !toggleBox">toggleColor</button>
 
         <ul>
-            <li v-for="number in tableau"> {{ number }} </li>
+            <li v-for="obj in objChat">
+                <div v-for="(val, props) in obj">
+                    {{ props }} : {{ val }}
+                </div>
+            </li>
         </ul>
     </div>
     
@@ -37,7 +41,12 @@
         new Vue({
             el: '#mon-app',
             data: {
-                tableau: [1,2,3,4,5],
+                objChat: [
+                    { race: 'Persan', age: 3, poids: '3kg' },
+                    { race: 'Persan', age: 3, poids: '3kg' },
+                    { race: 'Persan', age: 3, poids: '3kg' },
+                    { race: 'Persan', age: 3, poids: '3kg' }
+                ],
                 toggleBox: false
             },
         })
