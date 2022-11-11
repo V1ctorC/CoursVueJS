@@ -27,11 +27,9 @@
         <h1>Cours Vue JS</h1>
         <button v-on:click="toggleBox = !toggleBox">toggleColor</button>
 
-        <template v-if="toggleBox">
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore reprehenderit quaerat repellendus sapiente atque deleniti voluptas, quas, iusto eaque veniam odit delectus tenetur, provident ratione neque eveniet error quis magnam?</p>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore reprehenderit quaerat repellendus sapiente atque deleniti voluptas, quas, iusto eaque veniam odit delectus tenetur, provident ratione neque eveniet error quis magnam?</p>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore reprehenderit quaerat repellendus sapiente atque deleniti voluptas, quas, iusto eaque veniam odit delectus tenetur, provident ratione neque eveniet error quis magnam?</p>
-        </template>
+        <ul>
+            <li v-for="number in tableau"> {{ number }} </li>
+        </ul>
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.13/dist/vue.js"></script>
@@ -39,7 +37,7 @@
         new Vue({
             el: '#mon-app',
             data: {
-                num: 4,
+                tableau: [1,2,3,4,5],
                 toggleBox: false
             },
         })
