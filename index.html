@@ -5,50 +5,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vue JS playground</title>
-
-    <style>
-        .box {
-            width: 250px;
-            height: 250px;
-            border: 1px solid black;
-        }
-
-        .red {
-            background: crimson;
-        }
-
-        .bordure {
-            border: 10px solid #333;
-        }
-    </style>
 </head>
 <body>
-    <div id="mon-app">
-        <h1>Cours Vue JS</h1>
-        <button v-on:click="toggleBox = !toggleBox">toggleColor</button>
+    <div id="mon-app1">
+    </div>
 
-        <ul>
-            <li v-for="obj in objChat">
-                <div v-for="(val, props) in obj">
-                    {{ props }} : {{ val }}
-                </div>
-            </li>
-        </ul>
+    <div id="mon-app2">
+        <h1>{{ txt }}</h1>
+        <button v-on:click="func1">Changement</button>
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.13/dist/vue.js"></script>
     <script>
-        new Vue({
-            el: '#mon-app',
+        const ins1 = new Vue({
+            template: "<h1>{{ txt }}</h1>",
             data: {
-                objChat: [
-                    { race: 'Persan', age: 3, poids: '3kg' },
-                    { race: 'Persan', age: 3, poids: '3kg' },
-                    { race: 'Persan', age: 3, poids: '3kg' },
-                    { race: 'Persan', age: 3, poids: '3kg' }
-                ],
-                toggleBox: false
+                txt: "Hello App 1"
             },
+        })
+        ins1.$mount()
+        document.getElementById('mon-app1').appendChild(ins1.$el)
+
+        const ins2 = new Vue({
+            el: '#mon-app2',
+            data: {
+                txt: "Hello App 2"
+            },
+            methods: {
+                func1: function () {
+                    ins1.txt = "J'ai changé la valeur"
+                }
+            }
         })
     </script>
 </body>
