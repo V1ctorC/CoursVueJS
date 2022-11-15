@@ -8,6 +8,10 @@
 </head>
 <body>
     <div id="mon-app1">
+        <mon-premier-composant></mon-premier-composant>
+        <mon-premier-composant></mon-premier-composant>
+        <mon-premier-composant></mon-premier-composant>
+        <mon-premier-composant></mon-premier-composant>
     </div>
 
     <div id="mon-app2">
@@ -17,14 +21,27 @@
     
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.13/dist/vue.js"></script>
     <script>
+
+        Vue.component('mon-premier-composant', {
+            template: '<p>Mon premier composant {{ nom }} <button v-on:click="changementNom">Changement</button></p>',
+            data: function () {
+                return {
+                    nom: 'John Doe'
+                }
+            },
+            methods: {
+                changementNom: function() {
+                    this.nom = "Jack Doe"
+                }
+            }
+        })
+
         const ins1 = new Vue({
-            template: "<h1>{{ txt }}</h1>",
+            el: '#mon-app1',
             data: {
                 txt: "Hello App 1"
             },
         })
-        ins1.$mount()
-        document.getElementById('mon-app1').appendChild(ins1.$el)
 
         const ins2 = new Vue({
             el: '#mon-app2',
